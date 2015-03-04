@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta name="author" content="upisfree">
+    <meta name="copyright" content="upisfree">
+    <meta http-equiv="Pragma" content="cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:800&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+
+    <title>bod</title>
+
+    <style>
+body
+{
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans';
+  font-weight: 900;
+  overflow: hidden;
+}
+
+#lava
+{
+  position: absolute;
+  top: calc(100% - 36px);
+  width: 100%;
+  height: 128px;
+  background-image: url('http://i.imgur.com/5rVPkJJ.png');
+  background-position: 0px 0px;
+  background-repeat: repeat-x;
+}
+    </style>
+  </head>
+
+  <body>
+    <h1 id="bedsCount" style="position: absolute; left: 20px; top: 0px; font-size: 32px; z-index: 10;">КРОВАТЕЙ: 0</h1>
+    <h1 id="fail" style="display: none; position: absolute; left: 22.5%; top: 40%; font-size: 81px; z-index: 10;">ТЫ ЗАФЕЙЛИЛСЯ</h1>
+
+    <div id="lava"></div>
+
+    <script src="./js/lib/pixi.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
