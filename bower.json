@@ -1,0 +1,17 @@
+{
+  "name": "bod",
+  "version": "0.1.0",
+  "homepage": "https://github.com/upisfree/bod",
+  "authors": [
+    "upisfree <upisfree@outlook.com>"
+  ],
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "pixi.js": "~2.2.0"
+  }
+}
