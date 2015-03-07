@@ -25,9 +25,7 @@ window.onkeydown = (e) ->
 
 stage.addChild container
 
-animate = ->
-  requestAnimFrame animate
-
+tick = ->
   # ставим кровати
   if Math.random() < 0.1
     if not beds[0]
@@ -43,7 +41,7 @@ animate = ->
   if player.position.y > window.h - player.height - 50
     if not isContact player.position.x
       document.getElementById('fail').style.display = 'block'
-      setTimeout location.reload(), 1000
+      #setTimeout location.reload(), 1000
     else
       Stats.bed.add()
 
@@ -51,18 +49,20 @@ animate = ->
         container.removeChild beds[0]
         beds.remove 0, 1
 
-    player.speedY *= -0.85
+    player.speedY *= -0.95
     player.position.y = window.h - player.height - 50
-    player.spin = (Math.random() - 0.5) * 0.2
-    
-    if Math.random() > 0.5
-      player.speedY -= Math.random() * 6
 
   # ставим камеру
   renderer.offset = new PIXI.Point window.w / 2 - player.position.x, renderer.offset.y
 
   # анимация лавы
   document.getElementById('lava').style.backgroundPosition = -player.position.x
+
+animate = ->
+  requestAnimFrame animate
+
+  tick()
+
   renderer.render stage
 
 requestAnimFrame animate
