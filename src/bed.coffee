@@ -11,7 +11,8 @@ class Bed
     beds.push b
     container.addChild b
 
-isContact = (x) ->
+isContact = (x, w) ->
   for bed in beds
-    if bed.position.x <= x && bed.position.x + bed.width >= x
+    if (x + w >= bed.position.x and x + w <= bed.position.x + bed.width) or
+       (x >= bed.position.x and x <= bed.position.x + bed.width)
       return bed
