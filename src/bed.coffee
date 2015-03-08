@@ -6,7 +6,7 @@ class Bed
     b.width = 200
     b.height = 100
     b.position.x = x
-    b.position.y = window.h - b.height
+    b.position.y = window.h - lava.height - b.height
     
     beds.push b
     container.addChild b

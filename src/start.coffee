@@ -8,15 +8,18 @@ document.body.appendChild renderer.view
 
 container = new PIXI.DisplayObjectContainer()
 
+stage.addChild container
+
 gravity = 1
 
 beds = []
 bedsCount = 0
 
-new Bed 0
 player = new Player window.w / 2, window.h / 2
 
-stage.addChild container
+lava = new Lava player.position.x - window.w / 2
+
+new Bed 0
 
 window.onkeydown = (e) ->
   switch e.keyCode
@@ -52,7 +55,7 @@ tick = ->
   player.position.y += player.speedY
   player.speedY += gravity
   
-  if player.position.y > window.h - player.height - 50
+  if player.position.y > window.h - player.height - lava.s.height
     if not isContact player.position.x, player.width
       console.log 'fail'
       #document.getElementById('fail').style.display = 'block'
@@ -65,13 +68,13 @@ tick = ->
       #  beds.remove 0, 1
 
     player.speedY *= -0.95
-    player.position.y = window.h - player.height - 50
+    player.position.y = window.h - player.height - lava.s.height
 
   # ставим камеру
   renderer.offset = new PIXI.Point window.w / 2 - player.position.x, renderer.offset.y
 
   # анимация лавы
-  document.getElementById('lava').style.backgroundPosition = -player.position.x
+  lava.updatePosition player.position.x
 
 animate = ->
   requestAnimFrame animate

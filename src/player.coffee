@@ -5,7 +5,7 @@ class Player
     p.position.y = 0
     p.width = 100
     p.height = 100
-    p.speedX = Math.random() * 10
+    p.speedX = 0 #Math.random() * 10
     p.speedY = (Math.random() * 10) - 5
 
     container.addChild p

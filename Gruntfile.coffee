@@ -19,6 +19,7 @@ module.exports = (grunt) ->
             'src/stats.coffee'
             'src/player.coffee'
             'src/bed.coffee'
+            'src/lava.coffee'
             'src/start.coffee'
           ]
 
