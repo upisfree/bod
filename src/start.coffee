@@ -44,12 +44,6 @@ restart = ->
   player = new Player window.w / 2, window.h / 2
 
 tick = ->
-  # ставим кровати
-  #if not beds[0]
-  #  new Bed player.position.x + Math.randomInt(100, 500), window.h - 100
-  #else if beds[beds.length - 1].position.x - player.position.x <= 500 and Math.random > 0.5
-  #  new Bed beds[beds.length - 1].position.x + Math.randomInt(100, 1000), window.h - 100
-
   # считаем позицию игрока
   player.position.x += player.speedX
   player.position.y += player.speedY

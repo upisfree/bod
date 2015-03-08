@@ -8,6 +8,5 @@ class Lava
 
     return @
   updatePosition: (x) ->
-    console.log @s.position
     @s.position.x = x - window.w / 2
     @s.tilePosition.x = -x / 2
