@@ -14,7 +14,7 @@ class Player
 
     return @
   enableControl: (p) ->
-    window.onkeydown = (e) ->
+    window.onkeyup = (e) ->
       switch e.keyCode
         when 65, 37
           p.s.speedX -= 2.5 if p.s.speedX > -10
