@@ -1,3 +1,7 @@
+document.body.addEventListener 'touchmove', (e) ->
+  e.preventDefault()
+, false
+
 window.w = window.innerWidth
 window.h = window.innerHeight
 
@@ -7,66 +11,50 @@ renderer.view.style.zIndex = 1
 document.body.appendChild renderer.view
 
 container = new PIXI.DisplayObjectContainer()
-
 stage.addChild container
 
 gravity = 1
 
 beds = []
-
 player = new Player window.w / 2, window.h / 2
-
-lava = new Lava player.position.x - window.w / 2
+lava = new Lava player.s.position.x - window.w / 2
 
 new Bed 0
 
-bed = new Bed 100
-new Animation bed.s, { x: 700, y: bed.s.position.y }, 100
-
-window.onkeydown = (e) ->
-  switch e.keyCode
-    when 65, 37
-      player.speedX -= 5
-    when 68, 39
-      player.speedX += 5
-    when 32
-      new Bed player.position.x
-
 restart = ->
-  beds = []
-  Stats.bed.count = 0
-
-  for i in stage.children
-    stage.removeChild i
-
-  container = new PIXI.DisplayObjectContainer()
-  stage.addChild container
-
   new Bed 0
-  player = new Player window.w / 2, window.h / 2
+  player.s.speedX = Math.random() * 10
+  player.s.position.x = 0
+
+  Stats.bedsCount = 0
+  Stats.mileage = 0
+  
+  new Animation player.s, { x: 0, y: player.s.position.y }, 500
 
 tick = ->
-  # считаем позицию игрока
-  player.position.x += player.speedX
-  player.position.y += player.speedY
-  player.speedY += gravity
+  # calc player position
+  player.s.position.x += player.s.speedX
+  player.s.position.y += player.s.speedY
+  player.s.speedY += gravity
   
-  if player.position.y > window.h - player.height - lava.s.height
-    if not isContact player.position.x, player.width
-      #console.log 'fail'
-      #document.getElementById('fail').style.display = 'block'
-      #restart()
+  if player.s.position.y > window.h - player.s.height - lava.s.height
+    if not isContact player.s.position.x, player.s.width
+      restart()
     else
-      Stats.bed.add()
+      Stats.bedsCount += 1
 
-    player.speedY *= -0.95
-    player.position.y = window.h - player.height - lava.s.height
+    player.s.speedY *= -0.95
+    player.s.position.y = window.h - player.s.height - lava.s.height
 
-  # ставим камеру
-  renderer.offset = new PIXI.Point window.w / 2 - player.position.x, renderer.offset.y
+  # set camera
+  Camera.set { x: window.w / 2 - player.s.position.x, y: renderer.offset.y }
+  
+  # lava animation
+  lava.updatePosition player.s.position.x
 
-  # анимация лавы
-  lava.updatePosition player.position.x
+  # update stats
+  Stats.mileage = Math.round player.s.position.x if player.s.position.x > Stats.mileage
+  Stats.update()
 
 animate = ->
   requestAnimFrame animate

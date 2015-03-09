@@ -17,6 +17,7 @@ module.exports = (grunt) ->
             'src/utils.coffee'
             'src/math.coffee'
             'src/animation.coffee'
+            'src/camera.coffee'
             'src/stats.coffee'
             'src/player.coffee'
             'src/bed.coffee'

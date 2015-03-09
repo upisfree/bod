@@ -1,6 +1,6 @@
 Stats =
-  bed:
-    add: ->
-      Stats.bed.count += 1
-      document.getElementById('bedsCount').innerText = 'КРОВАТЕЙ: ' + Stats.bed.count
-    count: 0
+  bedsCount: 0
+  mileage: 0
+  update: ->
+    document.getElementById('bedsCount').innerText = 'BEDS: ' + Stats.bedsCount
+    document.getElementById('mileage').innerText = 'MILEAGE: ' + Stats.mileage / 100 + 'm'

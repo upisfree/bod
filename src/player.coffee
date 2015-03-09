@@ -1,13 +1,24 @@
 class Player
   constructor: (x, y) ->
-    p = new PIXI.Sprite PIXI.Texture.fromImage 'http://i.imgur.com/fFEVrQr.png'
-    p.position.x = 0
-    p.position.y = 0
-    p.width = 100
-    p.height = 100
-    p.speedX = 0 #Math.random() * 10
-    p.speedY = (Math.random() * 10) - 5
+    @s = new PIXI.Sprite PIXI.Texture.fromImage 'http://i.imgur.com/fFEVrQr.png'
+    @s.position.x = 0
+    @s.position.y = 0
+    @s.width = 100
+    @s.height = 100
+    @s.speedX = Math.random() * 10
+    @s.speedY = (Math.random() * 10) - 5
 
-    container.addChild p
+    container.addChild @s
 
-    return p
+    @enableControl @s
+
+    return @
+  enableControl: (s) ->
+    window.onkeydown = (e) ->
+      switch e.keyCode
+        when 65, 37
+          s.speedX -= 5
+        when 68, 39
+          s.speedX += 5
+        when 32
+          new Bed s.position.x
