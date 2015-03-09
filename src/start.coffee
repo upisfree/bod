@@ -13,13 +13,15 @@ stage.addChild container
 gravity = 1
 
 beds = []
-bedsCount = 0
 
 player = new Player window.w / 2, window.h / 2
 
 lava = new Lava player.position.x - window.w / 2
 
 new Bed 0
+
+bed = new Bed 100
+new Animation bed.s, { x: 700, y: bed.s.position.y }, 100
 
 window.onkeydown = (e) ->
   switch e.keyCode
@@ -51,15 +53,11 @@ tick = ->
   
   if player.position.y > window.h - player.height - lava.s.height
     if not isContact player.position.x, player.width
-      console.log 'fail'
+      #console.log 'fail'
       #document.getElementById('fail').style.display = 'block'
       #restart()
     else
       Stats.bed.add()
-
-      #if Math.random() > 0.5
-      #  container.removeChild beds[0]
-      #  beds.remove 0, 1
 
     player.speedY *= -0.95
     player.position.y = window.h - player.height - lava.s.height
@@ -74,6 +72,7 @@ animate = ->
   requestAnimFrame animate
 
   tick()
+  updateAllAnimations()
 
   renderer.render stage
 

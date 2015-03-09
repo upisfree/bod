@@ -16,6 +16,7 @@ module.exports = (grunt) ->
           'build/<%= pkg.name %>.js': [
             'src/utils.coffee'
             'src/math.coffee'
+            'src/animation.coffee'
             'src/stats.coffee'
             'src/player.coffee'
             'src/bed.coffee'
