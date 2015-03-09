@@ -23,10 +23,12 @@ new Bed 0
 
 restart = ->
   new Bed 0
+
+  player.beds = 10
   player.s.speedX = Math.random() * 10
   player.s.position.x = 0
 
-  Stats.bedsCount = 0
+  Stats.jumpedBeds = 0
   Stats.mileage = 0
   
   new Animation player.s, { x: 0, y: player.s.position.y }, 500
@@ -41,7 +43,7 @@ tick = ->
     if not isContact player.s.position.x, player.s.width
       restart()
     else
-      Stats.bedsCount += 1
+      Stats.jumpedBeds += 1
 
     player.s.speedY *= -0.95
     player.s.position.y = window.h - player.s.height - lava.s.height

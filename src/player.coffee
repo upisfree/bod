@@ -10,15 +10,18 @@ class Player
 
     container.addChild @s
 
-    @enableControl @s
+    @enableControl @
 
     return @
-  enableControl: (s) ->
+  enableControl: (p) ->
     window.onkeydown = (e) ->
       switch e.keyCode
         when 65, 37
-          s.speedX -= 5
+          p.s.speedX -= 2.5 if p.s.speedX > -10
         when 68, 39
-          s.speedX += 5
+          p.s.speedX += 2.5 if p.s.speedX < 10
         when 32
-          new Bed s.position.x
+          if p.beds > 0
+            new Bed p.s.position.x
+            p.beds -= 1
+  beds: 10

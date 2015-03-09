@@ -12,6 +12,6 @@
     "bower_components"
   ],
   "dependencies": {
-    "pixi.js": "~2.2.0"
+    "pixi.js": "~2.2.7"
   }
 }
