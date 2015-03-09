@@ -10,6 +10,15 @@ renderer = new PIXI.WebGLRenderer window.w, window.h
 renderer.view.style.zIndex = 1
 document.body.appendChild renderer.view
 
+# background
+background = new PIXI.TilingSprite PIXI.Texture.fromImage 'https://pp.vk.me/c621626/v621626450/c761/xvMcA2K8uJo.jpg'
+background.position = { x: 0, y: 0 }
+background.width = window.w
+background.height = window.h
+background.alpha = 0.1
+stage.addChild background
+# /background
+
 container = new PIXI.DisplayObjectContainer()
 stage.addChild container
 
@@ -53,6 +62,10 @@ tick = ->
   
   # lava animation
   lava.updatePosition player.s.position.x
+
+  # background animation
+  background.position.x = player.s.position.x - window.w / 2
+  background.tilePosition.x = player.s.position.x / 10
 
   # update stats
   Stats.mileage = Math.round player.s.position.x if player.s.position.x > Stats.mileage
