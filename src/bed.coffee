@@ -2,13 +2,18 @@ beds = []
 
 class Bed
   constructor: (x) ->
-    @s = new PIXI.Sprite PIXI.Texture.fromImage 'http://i.imgur.com/Upp8GdF.png'
+    if Math.random() > 0.2 # 1 / 10 (wow!)
+      texture = 'http://i.imgur.com/Upp8GdF.png'
+      @lifes = 2
+    else
+      texture = 'http://i.imgur.com/LfhMygw.png'
+      @lifes = 1
+
+    @s = new PIXI.Sprite PIXI.Texture.fromImage texture
     @s.width = 200
     @s.height = 100
     @s.position.x = x
     @s.position.y = window.h - lava.s.height - @s.height
-    
-    @lifes = 2
 
     beds.push @
     container.addChild @s
