@@ -1,5 +1,5 @@
 # grunt-grunticon
-DEV = false
+DEV = true
 
 module.exports = (grunt) ->
   require('load-grunt-tasks')(grunt)
