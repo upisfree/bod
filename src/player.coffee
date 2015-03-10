@@ -17,9 +17,9 @@ class Player
     window.onkeydown = (e) -> # TODO: Mousetrap
       switch e.keyCode
         when 65, 37
-          p.s.speedX -= 2.5 if p.s.speedX > -10
+          p.s.speedX -= Math.randomInt(1, 2.5) if p.s.speedX > -10
         when 68, 39
-          p.s.speedX += 2.5 if p.s.speedX < 10
+          p.s.speedX += Math.randomInt(1, 2.5) if p.s.speedX < 10
         when 32
           if p.beds > 0
             new Bed p.s.position.x

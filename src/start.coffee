@@ -38,7 +38,6 @@ restart = ->
   Stats.jumpedBeds = 0
   Stats.mileage = 0
   
-  player.s.position.x = 0
   #new Animation player.s, { x: 0, y: player.s.position.y }, 500
 
 tick = ->
@@ -47,6 +46,10 @@ tick = ->
   player.s.position.y += player.s.speedY
   player.s.speedY += Config.gravity
   
+  # apply wind
+  player.s.speedX -= Config.windSpeed
+
+  # contact with floor (lava or bed)
   if player.s.position.y > window.h - player.s.height - lava.s.height
     if not isContact player.s.position.x, player.s.width
       restart()
