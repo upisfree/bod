@@ -11,5 +11,5 @@ Camera =
   #    else
   #      Camera.animation.isOn = false
   #  delta: (v0, v, t) -> # TODO: parabolic motion
-  #    return Math.round (v0 - v) / t
+  #    return ((v0 - v) / t).toFixed()
   #  isOn: false

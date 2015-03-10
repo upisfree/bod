@@ -16,7 +16,7 @@ class Animation
   remove: ->
     animations.splice @.i - 1, 1
   delta: (v0, v) -> # TODO: parabolic motion
-    return Math.round (v - v0) / @t
+    return ((v - v0) / @t).toFixed()
 
 updateAllAnimations = ->
   for animation in animations

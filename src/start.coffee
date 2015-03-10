@@ -22,8 +22,6 @@ stage.addChild background
 container = new PIXI.DisplayObjectContainer()
 stage.addChild container
 
-gravity = 1
-
 beds = []
 player = new Player window.w / 2, window.h / 2
 lava = new Lava player.s.position.x - window.w / 2
@@ -33,20 +31,21 @@ new Bed 0
 restart = ->
   new Bed 0
 
-  player.beds = 10
+  player.beds = Config.bedsCountThatGives
   player.s.speedX = Math.random() * 10
   player.s.position.x = 0
 
   Stats.jumpedBeds = 0
   Stats.mileage = 0
   
-  new Animation player.s, { x: 0, y: player.s.position.y }, 500
+  player.s.position.x = 0
+  #new Animation player.s, { x: 0, y: player.s.position.y }, 500
 
 tick = ->
   # calc player position
   player.s.position.x += player.s.speedX
   player.s.position.y += player.s.speedY
-  player.s.speedY += gravity
+  player.s.speedY += Config.gravity
   
   if player.s.position.y > window.h - player.s.height - lava.s.height
     if not isContact player.s.position.x, player.s.width
@@ -68,7 +67,9 @@ tick = ->
   background.tilePosition.x = player.s.position.x / 10
 
   # update stats
-  Stats.mileage = Math.round player.s.position.x if player.s.position.x > Stats.mileage
+  Stats.mileage = player.s.position.x if player.s.position.x > Stats.mileage
+  Stats.bestMileage = Stats.mileage if Stats.mileage > Stats.bestMileage
+  player.checkIsNeedBeds()
   Stats.update()
 
 animate = ->

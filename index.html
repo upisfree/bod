@@ -19,12 +19,21 @@ body
   font-weight: 900;
   overflow: hidden;
 }
+
+.stats
+{
+  position: absolute;
+  left: 20px;
+  font-size: 32px;
+  z-index: 10;
+}
     </style>
   </head>
 
   <body>
-    <h1 id="beds" style="position: absolute; left: 20px; top: 0; font-size: 32px; z-index: 10;">BEDS: 0</h1>
-    <h1 id="mileage" style="position: absolute; left: 20px; top: 48px; font-size: 32px; z-index: 10;">MILEAGE: 0m</h1>
+    <h1 id="beds" class="stats" style="top: 0;">BEDS: 0</h1>
+    <h1 id="mileage" class="stats" style="top: 48px;">MILEAGE: 0m</h1>
+    <h1 id="bestMileage" class="stats" style="top: 96px; color: #d3d3d3;">BEST: 0m</h1>
 
     <script src="./build/lib.js"></script>
     <script src="./build/bod.js"></script>

@@ -14,7 +14,7 @@ class Player
 
     return @
   enableControl: (p) ->
-    window.onkeyup = (e) ->
+    window.onkeydown = (e) -> # TODO: Mousetrap
       switch e.keyCode
         when 65, 37
           p.s.speedX -= 2.5 if p.s.speedX > -10
@@ -24,4 +24,11 @@ class Player
           if p.beds > 0
             new Bed p.s.position.x
             p.beds -= 1
+  checkIsNeedBeds: ->
+    m = Stats.mileage / 100
+    
+    if (m - m % Config.whenGiveBeds) / Config.whenGiveBeds > @timesBedsBeenGiven
+      @timesBedsBeenGiven += 1
+      @beds += Config.bedsCountThatGives
+  timesBedsBeenGiven: 0 # rename?
   beds: 10
