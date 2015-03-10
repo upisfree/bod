@@ -15,14 +15,14 @@ module.exports = (grunt) ->
         files:
           'build/<%= pkg.name %>.js': [
             'src/config.coffee'
-            'src/utils.coffee'
-            'src/math.coffee'
-            'src/animation.coffee'
-            'src/camera.coffee'
-            'src/player.coffee'
-            'src/bed.coffee'
-            'src/lava.coffee'
-            'src/stats.coffee'
+            'src/core/utils.coffee'
+            'src/core/math.coffee'
+            'src/game/animation.coffee'
+            'src/game/camera.coffee'
+            'src/game/player.coffee'
+            'src/game/bed.coffee'
+            'src/game/lava.coffee'
+            'src/interface/stats.coffee'
             'src/start.coffee'
           ]
 
