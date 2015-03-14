@@ -3,15 +3,15 @@ beds = []
 class Bed
   constructor: (x) ->
     if Math.random() > 0.2 # 1 / 10 (wow!)
-      texture = 'http://i.imgur.com/Upp8GdF.png'
+      texture = 'assets/textures/bed.png'
       @lifes = 2
     else
-      texture = 'http://i.imgur.com/LfhMygw.png'
+      texture = 'assets/textures/broken_bed.png'
       @lifes = 1
 
     @s = new PIXI.Sprite PIXI.Texture.fromImage texture
-    @s.width = 200
-    @s.height = 100
+    @s.width = 256
+    @s.height = 128
     @s.position.x = x
     @s.position.y = window.h - lava.s.height - @s.height
 
@@ -26,7 +26,7 @@ isContact = (x, w) ->
 
       switch bed.lifes
         when 1
-          bed.s.texture = PIXI.Texture.fromImage 'http://i.imgur.com/LfhMygw.png'
+          bed.s.texture = PIXI.Texture.fromImage 'assets/textures/broken_bed.png'
         when 0
           container.removeChild bed.s
           beds.splice beds.indexOf(bed), 1

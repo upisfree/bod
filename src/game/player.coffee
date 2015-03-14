@@ -1,10 +1,10 @@
 class Player
   constructor: (x, y) ->
-    @s = new PIXI.Sprite PIXI.Texture.fromImage 'http://i.imgur.com/fFEVrQr.png'
+    @s = new PIXI.Sprite PIXI.Texture.fromImage 'assets/textures/player.png'
     @s.position.x = 0
     @s.position.y = 0
-    @s.width = 100
-    @s.height = 100
+    @s.width = 128
+    @s.height = 256
     @s.speedX = Math.random() * 10
     @s.speedY = (Math.random() * 10) - 5
 
