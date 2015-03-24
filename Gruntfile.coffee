@@ -28,7 +28,7 @@ module.exports = (grunt) ->
             'src/game/bed.coffee'
             'src/game/lava.coffee'
             'src/interface/stats.coffee'
-            'src/start.coffee'
+            'src/main.coffee'
           ]
 
     bower_concat:
