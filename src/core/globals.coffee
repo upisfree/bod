@@ -1,3 +1,5 @@
+Core = {}
+
 # Is this govnokod, uh?
 stage =
 container =
@@ -7,5 +9,3 @@ beds =
 player =
 lava =
 appliedGravity = null
-
-#Core = {}
