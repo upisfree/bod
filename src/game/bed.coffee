@@ -12,7 +12,7 @@ class Bed
     @s = new PIXI.Sprite PIXI.Texture.fromImage texture
     @s.width = 256
     @s.height = 128
-    @s.position.x = x
+    @s.position.x = x #- @s.width / 2
     @s.position.y = window.h - lava.s.height - @s.height
 
     beds.push @
