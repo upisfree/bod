@@ -23,46 +23,37 @@ container = new PIXI.DisplayObjectContainer()
 stage.addChild container
 
 beds = []
+players = {}
+
 player = new Player window.w / 2, window.h / 2
+
 lava = new Lava player.s.position.x - window.w / 2
 
-new Bed 0
-
-appliedGravity = 0
-
-restart = ->
-  new Bed 0
-
-  player.beds = Config.bedsCountThatGives
-  player.s.speedX = Math.random() * 10
-  player.s.position.x = 0
-
-  Stats.jumpedBeds = 0
-  Stats.mileage = 0
-  
-  #new Animation player.s, { x: 0, y: player.s.position.y }, 500
+Multiplayer.init()
 
 tick = ->
-  # calc player position
-  player.s.position.x += player.s.speedX
-  player.s.position.y += player.s.speedY
-  player.s.speedY += Config.gravity
-  appliedGravity += Config.gravity
+  # calc players position
+  for k, p of players
+    p.s.position.x += p.s.speedX
+    p.s.position.y += p.s.speedY
+    p.s.speedY += Config.gravity
+    p.appliedGravity += Config.gravity
   
-  # apply wind
-  player.s.speedX -= Config.windSpeed
+    # apply wind
+    p.s.speedX -= Config.windSpeed
 
-  # contact with floor (lava or bed)
-  if player.s.position.y > window.h - player.s.height - lava.s.height
-    if not isContact player.s.position.x, player.s.width
-      restart()
-    else
-      Stats.jumpedBeds += 1
+    # contact with floor (lava or bed)
+    if p.s.position.y > window.h - p.s.height - lava.s.height
+      if not isContact p.s.position.x, p.s.width
+        p.restart()
+        new Bed 0
+      else
+        Stats.jumpedBeds += 1
 
-    player.s.speedY = Math.abs(player.s.speedY) - appliedGravity / 50
-    appliedGravity = 0
-    player.s.speedY *= -1
-    player.s.position.y = window.h - player.s.height - lava.s.height
+      p.s.speedY = Math.abs(p.s.speedY) - p.appliedGravity / 50
+      p.appliedGravity = 0
+      p.s.speedY *= -1
+      p.s.position.y = window.h - player.s.height - lava.s.height
 
   # set camera
   Camera.set { x: window.w / 2 - player.s.position.x, y: renderer.offset.y }

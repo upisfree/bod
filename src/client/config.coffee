@@ -3,3 +3,4 @@ Config =
   windSpeed: 0.1
   bedsCountThatGives: 10 # rename?
   whenGiveBeds: 100      # rename?
+  port: 5252
