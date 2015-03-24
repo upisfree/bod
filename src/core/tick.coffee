@@ -11,7 +11,7 @@ Core.tick = ->
   # contact with floor (lava or bed)
   if player.s.position.y > window.h - player.s.height - lava.s.height
     if not isContact player.s.position.x, player.s.width
-      Core.restart()
+      #Core.restart()
     else
       Stats.jumpedBeds += 1
 

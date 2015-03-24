@@ -24,6 +24,20 @@ class Player
           if p.beds > 0
             new Bed p.s.position.x
             p.beds -= 1
+
+    if window.DeviceOrientationEvent
+      window.addEventListener 'deviceorientation', (e) ->
+        if e.alpha < 180
+          if e.alpha <= 90
+            p.s.speedX += (90 - e.alpha) / 10 if p.s.speedX < 10
+          else
+            p.s.speedX -= (e.alpha - 90) / 10 if p.s.speedX > -10
+        else
+          if e.alpha <= 270
+            p.s.speedX += (270 - e.alpha) / 10 if p.s.speedX < 10
+          else
+            p.s.speedX -= (e.alpha - 270) / 10 if p.s.speedX > -10
+      , false
   checkIsNeedBeds: ->
     m = Stats.mileage / 100
     
