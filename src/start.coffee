@@ -2,8 +2,7 @@ document.body.addEventListener 'touchmove', (e) ->
   e.preventDefault()
 , false
 
-window.w = window.innerWidth
-window.h = window.innerHeight
+window.onresize = resize
 
 start = ->
   stage = new PIXI.Stage 0xFFFFFF
@@ -92,3 +91,4 @@ animate = ->
   renderer.render stage
 
 start()
+resize()

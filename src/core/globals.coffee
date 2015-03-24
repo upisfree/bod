@@ -7,3 +7,5 @@ beds =
 player =
 lava =
 appliedGravity = null
+
+#Core = {}
