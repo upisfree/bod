@@ -1,6 +1,5 @@
-document.body.addEventListener 'touchmove', (e) ->
+window.ontouchmove = (e) ->
   e.preventDefault()
-, false
 
 window.onresize = Core.resize
 
