@@ -4,6 +4,9 @@ document.body.addEventListener 'touchmove', (e) ->
 
 window.onresize = Core.resize
 
+window.w = window.innerWidth
+window.h = window.innerHeight
+
 animate = ->
   requestAnimFrame animate
 

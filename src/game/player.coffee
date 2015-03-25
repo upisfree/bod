@@ -3,8 +3,8 @@ class Player
     @s = new PIXI.Sprite PIXI.Texture.fromImage 'assets/textures/player.png'
     @s.position.x = 0
     @s.position.y = 0
-    @s.width = 128
-    @s.height = 256
+    @s.width = window.w * 0.128
+    @s.height = window.h * 0.256
     @s.speedX = Math.random() * 10
     @s.speedY = (Math.random() * 10) - 5
 
