@@ -6,7 +6,7 @@ class Player
     @s.width = window.w * 0.128
     @s.height = window.h * 0.256
     @s.speedX = Math.random() * 10
-    @s.speedY = (Math.random() * 10) - 5
+    @s.speedY = 1 #(Math.random() * 10) - 5
 
     container.addChild @s
 

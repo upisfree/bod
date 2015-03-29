@@ -1,9 +1,12 @@
+ticks = 0
+
 Core.tick = ->
+  ticks += 1
+
   # calc player position
   player.s.position.x += player.s.speedX
   player.s.position.y += player.s.speedY
   player.s.speedY += Config.gravity
-  appliedGravity += Config.gravity
   
   # apply wind
   player.s.speedX -= Config.windSpeed
@@ -15,8 +18,7 @@ Core.tick = ->
     else
       Stats.jumpedBeds += 1
 
-    player.s.speedY = Math.abs(player.s.speedY) - appliedGravity / 50
-    appliedGravity = 0
+    player.s.speedY -= Math.abs(Config.gravity * 2) if ticks > 2
     player.s.speedY *= -1
     player.s.position.y = window.h - player.s.height - lava.s.height
 

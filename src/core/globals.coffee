@@ -7,5 +7,4 @@ renderer =
 background =
 beds =
 player =
-lava =
-appliedGravity = null
+lava = null
