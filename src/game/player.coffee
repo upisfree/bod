@@ -53,7 +53,7 @@ class Player
             a = -(p.alpha - 270)
           
           new Bed p.s.position.x - a
-          #p.beds -= 1
+          p.beds -= 1
       , false
   checkIsNeedBeds: ->
     m = Stats.mileage / 100
