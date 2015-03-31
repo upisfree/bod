@@ -2,6 +2,7 @@ Core.restart = ->
   new Bed 0
 
   player.beds = Config.bedsCountThatGives
+  player.timesBedsBeenGiven = 0
   player.s.speedX = Math.random() * 10
   player.s.position.x = 0
 
