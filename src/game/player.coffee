@@ -25,23 +25,20 @@ class Player
             new Bed p.s.position.x
             p.beds -= 1
 
-    if window.DeviceOrientationEvent # mobile
-      window.ondeviceorientation = (e) ->
-        console.log e
-        p.alpha = e.alpha
+    if window.DeviceMotionEvent # mobile
+      window.ondevicemotion = (e) ->
+        p.alpha = e.rotationRate.alpha
 
-      #setInterval ->
-      #  if p.alpha < 180
-      #    if p.alpha <= 90
-      #      p.s.speedX += (90 - p.alpha) / 10 if p.s.speedX < 10
-      #    else
-      #      p.s.speedX -= (p.alpha - 90) / 10 if p.s.speedX > -10
-      #  else
-      #    if e.alpha <= 270
-      #      p.s.speedX += (270 - p.alpha) / 10 if p.s.speedX < 10
-      #    else
-      #      p.s.speedX -= (p.alpha - 270) / 10 if p.s.speedX > -10
-      #, Config.deviceOrientationUpdate
+        if p.alpha < 180
+          if p.alpha <= 90
+            p.s.speedX += (90 - p.alpha) / 10 if p.s.speedX < 10
+          else
+            p.s.speedX -= (p.alpha - 90) / 10 if p.s.speedX > -10
+        else
+          if e.alpha <= 270
+            p.s.speedX += (270 - p.alpha) / 10 if p.s.speedX < 10
+          else
+            p.s.speedX -= (p.alpha - 270) / 10 if p.s.speedX > -10
 
       document.body.addEventListener 'touchend', (e) ->
         if p.beds > 0
