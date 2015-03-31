@@ -26,20 +26,21 @@ class Player
             p.beds -= 1
 
     if window.DeviceOrientationEvent # mobile
-      window.addEventListener 'deviceorientation', (e) ->
+      window.ondeviceorientation = (e) ->
         p.alpha = e.alpha
 
-        if e.alpha < 180
-          if e.alpha <= 90
-            p.s.speedX += (90 - e.alpha) / 10 if p.s.speedX < 10
+      setInterval ->
+        if p.alpha < 180
+          if p.alpha <= 90
+            p.s.speedX += (90 - p.alpha) / 10 if p.s.speedX < 10
           else
-            p.s.speedX -= (e.alpha - 90) / 10 if p.s.speedX > -10
+            p.s.speedX -= (p.alpha - 90) / 10 if p.s.speedX > -10
         else
           if e.alpha <= 270
-            p.s.speedX += (270 - e.alpha) / 10 if p.s.speedX < 10
+            p.s.speedX += (270 - p.alpha) / 10 if p.s.speedX < 10
           else
-            p.s.speedX -= (e.alpha - 270) / 10 if p.s.speedX > -10
-      , false
+            p.s.speedX -= (p.alpha - 270) / 10 if p.s.speedX > -10
+      , Config.deviceOrientationUpdate
 
       document.body.addEventListener 'touchend', (e) ->
         if p.beds > 0
