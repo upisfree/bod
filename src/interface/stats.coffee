@@ -3,7 +3,7 @@ Stats =
   mileage: 0
   bestMileage: 0
   update: ->
-    getById('alpha').innerText = 'ALPHA: ' + player.alpha
+    getById('beta').innerText = 'BETA: ' + player.beta.toFixed()
     getById('speed').innerText = 'SPEED: ' + player.s.speedX
 
     getById('beds').innerText = 'BEDS: ' + player.beds

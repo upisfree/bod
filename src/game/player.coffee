@@ -27,30 +27,30 @@ class Player
 
     if window.DeviceOrientationEvent # mobile
       window.addEventListener 'deviceorientation', (e) ->
-        p.alpha = e.alpha
+        p.beta = e.beta
 
-        if p.alpha < 180
-          if p.alpha <= 90
-            p.s.speedX += (90 - p.alpha) / 10 if p.s.speedX < 10
+        if p.beta < 180
+          if p.beta <= 90
+            p.s.speedX += (90 - p.beta) / 10 if p.s.speedX < 10
           else
-            p.s.speedX -= (p.alpha - 90) / 10 if p.s.speedX > -10
+            p.s.speedX -= (p.beta - 90) / 10 if p.s.speedX > -10
         else
-          if e.alpha <= 270
-            p.s.speedX += (270 - p.alpha) / 10 if p.s.speedX < 10
+          if e.beta <= 270
+            p.s.speedX += (270 - p.beta) / 10 if p.s.speedX < 10
           else
-            p.s.speedX -= (p.alpha - 270) / 10 if p.s.speedX > -10
+            p.s.speedX -= (p.beta - 270) / 10 if p.s.speedX > -10
       , true
 
       document.body.addEventListener 'touchend', (e) ->
         if p.beds > 0
-          if p.alpha < 90
-            a = 90 - p.alpha
-          else if p.alpha >= 90 and p.alpha < 180
-            a = -(p.alpha - 90)
-          else if p.alpha >= 180 and p.alpha < 270
-            a = 270 - p.alpha
-          else if p.alpha >= 270 and p.alpha <= 360
-            a = -(p.alpha - 270)
+          if p.beta < 90
+            a = 90 - p.beta
+          else if p.beta >= 90 and p.beta < 180
+            a = -(p.beta - 90)
+          else if p.beta >= 180 and p.beta < 270
+            a = 270 - p.beta
+          else if p.beta >= 270 and p.beta <= 360
+            a = -(p.beta - 270)
           
           new Bed p.s.position.x - a
           p.beds -= 1
@@ -63,4 +63,4 @@ class Player
       @beds += Config.bedsCountThatGives
   timesBedsBeenGiven: 0 # rename?
   beds: 10
-  alpha: null
+  beta: null
